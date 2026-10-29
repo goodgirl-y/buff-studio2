@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>BUFF STUDIO — FIND YOUR BUFF</title>
+  <link rel="stylesheet" href="style.css?v=12">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <button id="homeBtn" class="home-link" aria-label="처음으로">← <span>처음으로</span></button>
+      <img src="./logo.png" alt="BUFF STUDIO" class="logo" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block'">
+      <span id="logoFallback" class="logo-fallback" style="display:none">BUFF STUDIO</span>
+      <span id="headerCount" class="header-count"></span>
+    </header>
+    <main id="screen"></main>
+  </div>
+  <script src="script.js?v=12"></script>
+</body>
+</html>
