@@ -64,8 +64,8 @@
   .result-view.lunch .match{margin-top:5px;padding:3px 12px;font-size:11px;line-height:1.2}
   .result-view.lunch .result-message{margin-top:7px;padding:7px 11px;font-size:clamp(11px,1.5vh,13px);line-height:1.32;border-radius:18px}
   .result-view.lunch .tags{margin-top:7px;gap:5px 12px;font-size:11px;line-height:1.2}
-  .result-view.lunch .tip{font-size:clamp(12px,1.65vh,15px);margin-top:9px;line-height:1.3}
-  .result-view.lunch .actions{margin-top:18px;gap:18px;flex-shrink:0}
+  .result-view.lunch .tip{font-size:clamp(12px,1.65vh,15px);margin-top:18px;line-height:1.3}
+  .result-view.lunch .actions{margin-top:20px;gap:20px;flex-shrink:0}
   .result-view.lunch .pill{height:clamp(38px,5.5vh,46px);min-width:clamp(155px,17vw,230px);font-size:clamp(14px,1.8vh,17px)}
   /* Loading: pin the progress indicator at top, center the rotating logo independently. */
   .loading-view{position:relative;height:100%;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(15px,3vh,24px);padding-top:55px;padding-bottom:55px}
