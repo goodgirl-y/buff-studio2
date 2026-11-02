@@ -44,3 +44,33 @@
   .result-view.lunch .result-message{padding:8px 11px;font-size:12px;line-height:1.4;margin-top:8px}
   .result-view.lunch .result-card{min-height:325px}
 }
+
+
+/* iPad landscape: prevent bottom buttons from being clipped; no scrolling. */
+@media (orientation:landscape) and (min-width:800px) and (max-height:950px){
+  html,body{height:100%;overflow:hidden}
+  #app{height:100dvh;min-height:0;overflow:hidden;padding-top:clamp(10px,1.5vh,18px);padding-bottom:clamp(10px,1.5vh,18px)}
+  .panel{min-height:0;overflow:hidden}
+  .result-view.lunch{height:100%;min-height:0;display:flex;flex-direction:column;padding-top:clamp(12px,1.8vh,18px);padding-bottom:10px}
+  .result-view.lunch .progress-track{flex-shrink:0}
+  .result-view.lunch .progress-info{flex-shrink:0;margin-top:5px;min-height:21px;font-size:14px}
+  .result-view.lunch .result-body{flex:1;min-height:0;justify-content:center;padding-top:3px}
+  .result-view.lunch .result-title{font-size:clamp(22px,2.5vh,27px);margin-bottom:7px;line-height:1.1}
+  .result-view.lunch .result-card{min-height:0;width:min(100%,535px);padding:clamp(10px,1.6vh,15px) 22px;border-radius:24px}
+  .result-view.lunch .result-kicker{font-size:clamp(13px,1.6vh,16px);margin-bottom:5px;line-height:1.2}
+  .result-view.lunch .result-main{font-size:clamp(26px,3.6vh,35px);margin-bottom:7px;line-height:1.1}
+  .result-view.lunch .food-photo{height:clamp(92px,15vh,123px);width:clamp(175px,26vw,230px);margin-bottom:7px;object-fit:cover}
+  .result-view.lunch .result-sub{font-size:clamp(12px,1.65vh,15px);line-height:1.25}
+  .result-view.lunch .match{margin-top:5px;padding:3px 12px;font-size:11px;line-height:1.2}
+  .result-view.lunch .result-message{margin-top:7px;padding:7px 11px;font-size:clamp(11px,1.5vh,13px);line-height:1.32;border-radius:18px}
+  .result-view.lunch .tags{margin-top:7px;gap:5px 12px;font-size:11px;line-height:1.2}
+  .result-view.lunch .tip{font-size:clamp(12px,1.65vh,15px);margin-top:9px;line-height:1.3}
+  .result-view.lunch .actions{margin-top:9px;gap:18px;flex-shrink:0}
+  .result-view.lunch .pill{height:clamp(38px,5.5vh,46px);min-width:clamp(155px,17vw,230px);font-size:clamp(14px,1.8vh,17px)}
+  /* Loading: pin the progress indicator at top, center the rotating logo independently. */
+  .loading-view{position:relative;height:100%;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(15px,3vh,24px);padding-top:55px;padding-bottom:55px}
+  .loading-view .progress-track{position:absolute;top:clamp(12px,1.8vh,18px);left:clamp(32px,4.4vw,68px);width:calc(100% - 2 * clamp(32px,4.4vw,68px))}
+  .loading-view .progress-info{position:absolute;top:clamp(24px,3.3vh,35px);left:clamp(32px,4.4vw,68px);right:clamp(32px,4.4vw,68px);margin-top:0;min-height:22px;font-size:14px}
+  .loading-view .loading-logo{width:clamp(140px,21vh,185px);height:clamp(140px,21vh,185px);position:relative;top:-18px}
+  .loading-view .loading-tip{position:relative;top:-18px;margin:0;font-size:clamp(13px,1.8vh,16px)}
+}
