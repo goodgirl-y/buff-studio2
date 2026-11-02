@@ -96,3 +96,24 @@
   .result-view.lunch .result-card{flex-shrink:1}
   .result-view.lunch .actions{margin-bottom:0}
 }
+
+/* 점메추 결과창 간격 조정 — 아이패드 가로 화면 */
+@media (orientation: landscape)
+  and (min-width: 800px)
+  and (max-height: 950px) {
+
+  /* '결과' 제목과 하늘색 결과 박스 사이 */
+  .result-view.lunch .result-title {
+    margin-bottom: 14px;
+  }
+
+  /* 하늘색 결과 박스와 TIP 사이 */
+  .result-view.lunch .tip {
+    margin-top: 18px;
+  }
+
+  /* TIP과 하단 버튼 2개 사이 */
+  .result-view.lunch .actions {
+    margin-top: 18px;
+  }
+}
