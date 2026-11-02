@@ -1,89 +1,107 @@
-// BUFF STUDIO | 콘텐츠와 결과는 이 파일에서 수정하세요.
-const datasets = {
-  daily: {
-    name: '오늘의 BUFF',
-    questions: [
-      {q:'지금 내 업무 상태는 어떤가요?', options:['해야 할 일이 많아 정리가 필요해요','집중이 잘 안 되고 자꾸 딴생각이 나요','잠깐의 여유가 필요해요','새로운 아이디어나 자극이 필요해요'], scores:[['focus','drive'],['focus','refresh'],['rest','recovery'],['idea','confidence']]},
-      {q:'오늘 가장 듣고 싶은 말은?',options:['하나씩 해도 충분해요','조금만 더, 잘하고 있어요!','잠깐 쉬어도 괜찮아요','새로운 시도를 해봐도 좋아요'],scores:[['focus','rest'],['confidence','drive'],['rest','recovery'],['idea','confidence']]},
-      {q:'지금 3분이 생긴다면?',options:['할 일을 정리하고 우선순위를 정해요','가볍게 몸을 움직여요','눈을 감고 잠깐 쉬어요','새로운 것을 찾아봐요'],scores:[['focus','drive'],['refresh','recovery'],['rest','recovery'],['idea','confidence']]},
-      {q:'오늘의 나에게 가장 필요한 변화는?',options:['복잡한 생각을 단순하게 만들기','시작할 용기 얻기','마음의 여유 되찾기','기분을 환기하고 새롭게 보기'],scores:[['focus','rest'],['confidence','drive'],['recovery','rest'],['refresh','idea']]},
-      {q:'오늘 업무 중 가장 자주 느낀 감정은?',options:['할 일이 쌓여 조금 조급해요','시작하기 전부터 망설여져요','반복되는 일에 지루함을 느껴요','잠깐 쉬면서 재정비하고 싶어요'],scores:[['focus','drive'],['confidence','drive'],['refresh','idea'],['recovery','rest']]},
-      {q:'화면에 지금 하나의 버튼이 나타난다면?',options:['정리하기 · 복잡한 생각 줄이기','시작하기 · 미뤄둔 일에 도전하기','새로고침 · 새로운 자극 만나기','잠깐 멈춤 · 여유 찾기'],scores:[['focus','rest'],['drive','confidence'],['idea','refresh'],['rest','recovery']]},
-      {q:'오늘 퇴근 전 가장 바라는 모습은?',options:['중요한 일 하나를 끝낸 나','용기 내서 새로운 일을 시도한 나','작은 즐거움을 발견한 나','무리하지 않고 나를 챙긴 나'],scores:[['focus','drive'],['confidence','idea'],['refresh','idea'],['recovery','rest']]}
-    ],
-    results: {
-      focus:{title:'집중아 어딨니',subtitle:'분명 할 일은 있는데 자꾸 딴짓하게 되는 상태',message:'해야 할 일은 분명한데 자꾸 다른 곳에 눈길이 가는 날이 있죠. 그럴 땐 억지로 집중하려 하기보다 주변을 잠깐 정리해 보세요. 해야 할 일을 하나만 정하고 짧게 시작하는 것도 좋아요. 작은 몰입이 쌓이면 어느새 나만의 리듬을 찾을 수 있을 거예요.',mission:'지금 하고 싶은 딴짓 하나를 메모해 두고, 딱 10분만 할 일에 집중해 보세요.\n10분 뒤에는 예약한 딴짓을 즐겨도 좋아요!',tags:['#집중력 실종','#다시몰입','#작은시작']},
-      rest:{title:'일단 좀 누울게',subtitle:'지금 뭔가를 더 하기보다 잠깐 멍때리고 싶은 상태',message:'계속 무언가를 해야 할 것 같지만, 가끔은 아무것도 하지 않는 시간도 필요해요. 잠시 화면에서 눈을 떼고 창밖을 바라보거나 좋아하는 음악을 들어보세요. 꼭 의미 있는 일을 하지 않아도 괜찮아요. 잠깐의 여유가 남은 하루를 조금 더 가볍게 만들어 줄 거예요.',mission:'타이머를 1분으로 맞추고 아무것도 하지 않아 보세요.\n휴대폰도, 업무 생각도 잠깐 내려놓고 눈앞에 보이는 풍경만 구경하기!',tags:['#여유','#쉼표','#리듬']},
-      confidence:{title:'나 제법 괜찮을지도?',subtitle:'확신은 조금 부족하지만 사실 꽤 잘해내고 있는 상태',message:'잘하고 있는 건지 확신이 서지 않을 때가 있죠. 하지만 오늘까지 해온 일들을 돌아보면 생각보다 많은 걸 해냈을 거예요. 아직 부족한 부분보다 이미 해낸 것들에 조금 더 주목해 보세요. 스스로를 인정하는 작은 순간이 다음 도전을 시작할 자신감이 되어 줄 거예요.',mission:'오늘 해낸 사소한 일 하나를 떠올리고 스스로에게 별점 5개를 주세요.\n메일 한 통 보낸 것도 충분히 별 다섯 개짜리 성과예요!',tags:['#자신감','#도전','#응원한마디']},
-      refresh:{title:'소소하지만 확실한 행복',subtitle:'을 찾아서',message:'매일 비슷한 하루가 반복되면 작은 변화도 꽤 반갑게 느껴지죠. 평소와 다른 길로 걸어보거나 궁금했던 간식을 골라보는 건 어때요? 거창한 계획이 없어도 일상에는 생각보다 많은 즐거움이 숨어 있어요. 오늘 발견한 작은 재미 하나가 평범한 하루를 특별하게 만들어 줄지도 몰라요.',mission:'오늘의 나에게 작은 서프라이즈를 하나 준비해 보세요.\n좋아하는 간식을 서랍에 넣어두거나, 메모지에 웃긴 한마디를 적어두는 것도 좋아요!',tags:['#기분전환','#새로운시선','#리프레시']},
-      drive:{title:'일단 하고 쉬자',subtitle:'마음은 먹었지만 첫 시작이 제일 어려운 상태',message:'시작하기 전에는 해야 할 일이 실제보다 더 크게 느껴질 때가 있어요. 처음부터 완벽하게 해내려고 하기보다 가장 쉬운 일 하나만 골라보세요. 파일을 열거나 첫 문장을 적는 것만으로도 충분한 시작이 될 수 있죠. 작은 행동 하나가 생각보다 큰 추진력을 만들어 줄 거예요.',mission:'미뤄둔 일 하나를 골라 딱 2분만 시작해 보세요.\n완성은 다음 편의 나에게 맡기고, 오늘은 예고편만 찍는 거예요!',tags:['#추진력','#실행','#시작']},
-      recovery:{title:'방전 이슈',subtitle:'쉬어도 피곤하고 에너지가 바닥난 상태',message:'평소처럼 하루를 보내는 것만으로도 유난히 힘이 드는 날이 있죠. 그럴 때는 남은 에너지를 억지로 끌어 쓰기보다 나를 돌보는 시간을 먼저 챙겨보세요. 물 한 잔을 마시고 가볍게 몸을 풀거나 충분히 쉬는 것도 좋아요. 오늘은 더 많이 해내는 것보다 내일을 위한 에너지를 남겨두는 게 중요해요.',mission:'오늘 꼭 하지 않아도 되는 일 하나를 찾아 내일로 미뤄보세요.\n가끔은 할 일을 더하는 것보다 덜어내는 게 필요한 날도 있으니까요.',tags:['#회복모드','#충전시급','#에너지방전']},
-      idea:{title:'머리 과부하 이슈',subtitle:'머리속이 정리가 안되는 상태',message:'좋은 생각은 꼭 책상 앞에서만 떠오르지 않아요. 시선을 조금 바꾸거나 평소와 다른 순서로 생각해 보는 것만으로도 새로운 가능성이 보일 수 있죠. 오늘은 정답을 빨리 찾기보다 재미있는 질문 하나를 만들어보세요. 작은 호기심이 다음 아이디어로 이어질 거예요.',mission:'지금 고민 중인 일에 가장 엉뚱한 해결책 하나를 떠올려 보세요.\n당장 쓸 수 없어도 괜찮아요. 가끔은 말도 안 되는 생각에서 좋은 아이디어가 시작되니까요!',tags:['#아이디어 과부하','#호기심','#뇌 교통정리']}
-    }
-  },
-  lunch: {
-    name:'점심 메뉴 추천',
-    questions:[
-      {q:'오늘 점심은 어떤 기분으로 먹고 싶어?',options:['든든하게 에너지를 채우고 싶어','가볍고 산뜻하게 먹고 싶어','평소보다 특별한 한 끼가 좋아'],weights:[{hearty:3,comfort:1},{light:3,clean:2},{special:3,novel:1}]},
-      {q:'지금 가장 끌리는 맛은?',options:['매콤하고 자극적인 맛','따뜻하고 편안한 맛','담백하고 깔끔한 맛','짭짤하고 감칠맛 나는 맛'],weights:[{spicy:4},{warm:4,comfort:2},{clean:4,light:1},{savory:4}]},
-      {q:'오늘 점심시간은 어떤 상황이야?',options:['시간이 부족해서 빠르게 먹고 싶어','여유롭게 제대로 먹고 싶어','메뉴 고민 없이 익숙한 게 좋아'],weights:[{quick:4},{leisure:3,special:1},{familiar:4}]},
-      {q:'지금 배고픔은 어느 정도야?',options:['밥 한 그릇은 든든히 먹고 싶어','적당히 배부르면 만족해','부담 없이 가볍게 먹고 싶어'],weights:[{hearty:3},{comfort:2,savory:1},{light:3,clean:1}]},
-      {q:'오늘 점심에서 더 중요한 건?',options:['익숙하고 실패 없는 선택','새로운 메뉴를 먹는 재미','천천히 즐기는 편안함'],weights:[{familiar:3},{novel:3,special:2},{comfort:3,leisure:2}]},
-      {q:'식사 후에는 어떤 기분이고 싶어?',options:['든든하게 오후를 시작하고 싶어','기분을 산뜻하게 바꾸고 싶어','따뜻하게 마음을 채우고 싶어'],weights:[{hearty:2},{clean:2,light:2},{warm:2,comfort:2}]},
-      {q:'오늘 점심에 어울리는 분위기는?',options:['활기차고 확실한 맛','조용하고 편안한 한 끼','작지만 색다른 즐거움'],weights:[{spicy:2,hearty:1},{warm:2,comfort:2},{novel:3,special:2}]}
-    ],
-    results:[
-      {title:'제육덮밥',image:'jeyuk.jpg',attrs:{hearty:3,spicy:3,familiar:2,quick:2},buffTitle:'활력 충전',subtitle:'매콤하고 든든한 한 끼',message:'오전 내내 집중하느라 지쳤다면 오늘은 매콤하고 든든한 제육덮밥이 어울려요. 익숙하지만 확실한 맛으로 점심시간을 즐겨보세요. 오후를 시작하기 전, 기분 좋은 활력을 채우는 시간이 될 거예요.',mission:'식사 후 잠깐 바깥 공기 쐬기',tags:['#매콤함','#든든함','#활력']},
-      {title:'우동',image:'udon.jpg',attrs:{warm:3,comfort:3,light:2,quick:2},buffTitle:'따뜻한 위로',subtitle:'국물 한 모금의 작은 여유',message:'복잡했던 오전을 지나왔다면 오늘은 따뜻한 우동 한 그릇이 잘 어울려요. 부드러운 면과 따뜻한 국물을 천천히 즐기며 마음의 속도도 조금 낮춰보세요. 잠깐의 편안함이 오후의 시작을 부드럽게 만들어줄 거예요.',mission:'첫 세 입은 화면을 보지 않고 천천히 먹기',tags:['#따뜻함','#편안함','#여유']},
-      {title:'샌드위치',image:'sandwich.jpg',attrs:{light:3,clean:3,quick:3},buffTitle:'산뜻한 시작',subtitle:'가볍고 경쾌한 점심시간',message:'오늘은 무겁지 않게 기분을 바꾸고 싶다면 샌드위치를 추천해요. 좋아하는 재료가 겹겹이 쌓인 한 입처럼 작은 즐거움도 차곡차곡 모아보세요. 바쁜 일정 속에서도 점심시간만큼은 나를 위한 시간이 될 수 있어요.',mission:'좋아하는 음료와 함께 짧은 휴식 즐기기',tags:['#산뜻함','#간편함','#가벼움']},
-      {title:'닭갈비',image:'dakgalbi.jpg',attrs:{hearty:3,spicy:3,special:2,leisure:3},buffTitle:'에너지 폭발',subtitle:'평범한 점심에 강렬한 한 끼',message:'오늘은 조금 더 신나는 점심이 필요해 보여요. 매콤한 닭갈비처럼 확실한 맛으로 일상의 분위기를 바꿔보세요. 함께 먹는 사람이 있다면 이야기를 나누며 즐겨도 좋아요. 평범한 하루에 작은 이벤트가 될 거예요.',mission:'점심시간에 즐거웠던 순간 하나 기억하기',tags:['#매콤함','#특별함','#활력']},
-      {title:'볶음밥',image:'fried-rice.jpg',attrs:{hearty:2,savory:3,familiar:3,quick:3},buffTitle:'든든한 안정',subtitle:'익숙해서 더 반가운 한 그릇',message:'메뉴 고민이 길어지는 날에는 익숙하고 든든한 볶음밥이 좋은 선택이에요. 여러 재료가 어우러지는 맛처럼 오늘의 작은 일들도 하나씩 자리를 찾아갈 거예요. 복잡한 선택은 잠시 내려놓고 편안한 점심을 즐겨보세요.',mission:'식사 후 가장 먼저 할 일 하나만 정하기',tags:['#고소함','#익숙함','#든든함']},
-      {title:'짜장면',image:'jajangmyeon.jpg',attrs:{hearty:3,savory:3,familiar:3,leisure:1},buffTitle:'만족 충전',subtitle:'고민 끝에 만나는 익숙한 행복',message:'오늘은 누구나 아는 그 맛이 유난히 반가울 수 있어요. 진한 소스와 면이 어우러지는 짜장면으로 든든한 점심을 즐겨보세요. 꼭 새로운 선택이 아니어도 괜찮아요. 익숙한 만족이 하루를 기분 좋게 채워줄 때도 있으니까요.',mission:'점심을 먹으며 오늘의 작은 만족 하나 떠올리기',tags:['#감칠맛','#익숙함','#만족']},
-      {title:'초밥',image:'sushi.jpg',attrs:{clean:3,light:2,special:3,leisure:2},buffTitle:'기분 전환',subtitle:'오늘은 조금 특별한 선택',message:'같은 점심이 반복되어 지루했다면 오늘은 초밥으로 작은 변화를 만들어보세요. 여러 가지 맛을 하나씩 발견하는 과정이 점심시간의 재미가 될 거예요. 평소와 조금 다른 선택만으로도 하루의 분위기는 달라질 수 있어요.',mission:'평소 고르지 않던 초밥 한 종류 시도하기',tags:['#깔끔함','#특별함','#발견']},
-      {title:'국밥',image:'gukbap.jpg',attrs:{hearty:3,warm:3,comfort:3,familiar:2},buffTitle:'회복 충전',subtitle:'따뜻하고 든든하게 채우는 시간',message:'몸과 마음이 모두 바쁜 날에는 따뜻한 국밥 한 그릇이 어울려요. 뜨거운 국물을 천천히 즐기며 오전의 긴장을 잠깐 내려놓아 보세요. 든든한 점심과 짧은 휴식이 오후를 이어갈 여유를 만들어줄 거예요.',mission:'급하게 먹지 않고 잠시 천천히 쉬기',tags:['#따뜻함','#든든함','#회복']},
-      {title:'알밥',image:'albap.jpg',attrs:{savory:3,novel:3,special:2,quick:2},buffTitle:'소소한 즐거움',subtitle:'톡톡 터지는 한 입의 재미',message:'오늘은 작은 재미가 숨어 있는 알밥을 추천해요. 톡톡 터지는 식감처럼 평범한 점심에도 의외의 즐거움이 있을 수 있어요. 익숙한 업무 사이에서 잠깐 웃을 수 있는 순간을 발견해 보세요.',mission:'오늘 발견한 사소한 즐거움 하나 기억하기',tags:['#감칠맛','#식감','#소확행']},
-      {title:'비빔밥',image:'bibimbap.jpg',attrs:{hearty:2,clean:2,light:2,novel:1,leisure:2},buffTitle:'균형 충전',subtitle:'다양한 맛이 만드는 좋은 조화',message:'여러 가지를 동시에 신경 쓰느라 분주한 날이라면 비빔밥처럼 조화로운 한 그릇을 추천해요. 서로 다른 재료가 어우러져 하나의 맛을 만드는 것처럼, 오늘의 일들도 하나씩 균형을 찾아갈 거예요. 점심만큼은 편안하게 즐겨보세요.',mission:'오후 일정에서 중요한 일과 쉬는 시간 구분하기',tags:['#다채로움','#균형','#든든함']}
-    ]
-  }
+/* BUFF STUDIO — 탭형 아이패드 체험 웹사이트. 모든 문구와 메뉴는 이 파일에서 수정할 수 있어요. */
+const strengthResults = {
+  focus:{title:'집중아 어디니?',sub:'흩어진 생각을 다시 모을 수 있는 힘',message:'해야 할 일은 분명한데 자꾸 다른 곳에 눈길이 가는 날이 있지. 잠깐 집중이 끊겼다고 오늘을 망친 건 아니야. 다시 돌아올 수 있다는 것만으로도 충분해.',tip:'잠깐 딴생각했다고 집중력이 사라진 건 아니니까.',tags:['#집중','#나만의속도','#다시시작']},
+  rest:{title:'일단 좀 누울게',sub:'아무것도 하지 않는 시간을 즐길 수 있는 힘',message:'쉬는 순간에도 뭔가 해야 할 것 같아서 마음이 바쁠 때가 있지. 그렇지만 잠깐 멈춘다고 뒤처지는 건 아니야. 지금만큼은 무언가를 해내지 않아도 괜찮아.',tip:'아무것도 하지 않는 시간도 오늘의 일부야.',tags:['#잠깐멈춤','#여유','#쉼표']},
+  confidence:{title:'나 제법 괜찮을지도?',sub:'스스로의 가능성을 조금 더 믿을 수 있는 힘',message:'잘하고 있는지 확신이 안 들 때가 있지. 그런데 지금까지 해온 일을 돌아보면 생각보다 많은 걸 해냈을 거야. 부족한 점만큼 이미 해낸 일도 봐줘.',tip:'오늘의 나, 생각보다 꽤 괜찮은데?',tags:['#자신감','#작은성취','#나다움']},
+  refresh:{title:'소확행을 찾아서',sub:'평범한 하루에서 작은 즐거움을 발견하는 힘',message:'매일 비슷한 하루가 반복되면 괜히 지루해질 때가 있지. 특별한 일이 생겨야만 즐거운 건 아니야. 평소와 같은 풍경에서도 뜻밖의 재미가 기다리고 있을지 몰라.',tip:'별거 아닌 일이 오늘의 하이라이트가 될 수도 있어.',tags:['#기분전환','#작은행복','#새로운발견']},
+  drive:{title:'일단 하고 쉬자',sub:'망설이던 일을 시작할 수 있는 힘',message:'해야 할 일을 알면서도 시작하기가 유난히 어려운 날이 있지. 처음부터 완벽하게 해낼 필요는 없어. 작은 시작 하나가 다음 움직임을 만들어 주니까.',tip:'시작했다면 이미 하나는 해낸 거야.',tags:['#첫걸음','#추진력','#시작의힘']},
+  recovery:{title:'방전 이슈',sub:'소진된 에너지를 다시 채울 수 있는 힘',message:'평소에는 괜찮던 일도 오늘따라 버겁게 느껴질 수 있어. 그런 날에는 더 힘을 내지 않아도 돼. 이미 충분히 애썼으니까 남은 에너지를 지키는 것도 중요해.',tip:'오늘은 100%가 아니어도 괜찮아.',tags:['#회복','#에너지절약','#나를돌보기']},
+  idea:{title:'머리 과부하 이슈',sub:'익숙한 생각에서 새로운 가능성을 발견하는 힘',message:'생각은 많은데 마음에 드는 답이 나오지 않을 때가 있지. 같은 고민을 계속하지 않아도 괜찮아. 조금 엉뚱한 시선에서 예상치 못한 실마리가 나올 수도 있으니까.',tip:'좋은 생각은 꼭 정답처럼 생기진 않았어.',tags:['#새로운시선','#아이디어','#호기심']}
 };
-let current=null,step=0,answers=[];
-const screen=document.getElementById('screen'),homeBtn=document.getElementById('homeBtn'),headerCount=document.getElementById('headerCount');
-const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function goHome(){current=null;step=0;answers=[];render()}
-function start(key){current=key;step=0;answers=[];render()}
-function choose(i){answers[step]=i;step++;render()}
-function back(){if(step>0){step--;answers=answers.slice(0,step);render()}else goHome()}
-function progress(total,done){return `<div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><div class="progress-fill" style="width:${done/total*100}%"></div></div><div class="progress-meta"><span>${Math.min(done+1,total)}/${total}</span><span>응답 ${done}개</span></div>`}
-function getResult(){
- const d=datasets[current];
+
+/* 10문항. 각 선택지의 keys가 결과별 점수를 결정해요. */
+const strengthQuestions = [
+ {q:'출근길, 눈앞에서 버스가 떠났다.\n나의 반응은?',a:[['다음 버스에서 앉아 갈 수 있겠는데? 개이득','refresh','confidence'],['역시 오늘도 쉽지 않군. 잠깐 쉬고 싶다','rest','recovery'],['택시 탈까? 통장 잔고 확인부터.','drive','focus']]},
+ {q:'출근해서 컴퓨터를 켰는데,\n제일 먼저 드는 생각은?',a:[['오늘 할 일부터 하나씩 정리해야지.','focus','drive'],['일단 커피부터 마시고 싶어.','rest','recovery'],['오늘은 뭔가 다른 일이 생겼으면!','refresh','idea']]},
+ {q:'일이 좀처럼 풀리지 않을 때,\n내 모습에 가장 가까운 건?',a:[['시작을 미루고 괜히 다른 일을 해.','drive','focus'],['같은 방법만 반복하다 머리가 복잡해져.','idea','focus'],['나만 잘 못하는 것 같아서 걱정돼.','confidence','recovery']]},
+ {q:'점심시간까지 10분 남았다.\n뭘 하고 싶어?',a:[['잠깐 멍때리면서 머리를 비울래.','rest','recovery'],['작은 일 하나만 끝내놓고 갈래.','focus','drive'],['재밌는 영상이나 새로운 소식 좀 볼래.','refresh','idea']]},
+ {q:'오늘 나를 가장 지치게 하는 건?',a:[['계속 쌓이는 업무와 피곤함.','recovery','rest'],['잘하고 있는지 확신이 없는 마음.','confidence','drive'],['비슷한 일만 반복되는 하루.','refresh','idea']]},
+ {q:'갑자기 초능력 하나가 생긴다면\n어떤 게 좋을까?',a:[['산만한 생각을 한 번에 정리하는 능력.','focus','idea'],['원할 때 바로 에너지를 회복하는 능력.','recovery','rest'],['망설임 없이 시작하는 능력.','drive','confidence']]},
+ {q:'오늘 가장 듣고 싶은 말은?',a:[['지금도 충분히 잘하고 있어.','confidence','recovery'],['잠깐 쉬어도 괜찮아.','rest','recovery'],['생각보다 잘 풀릴 수도 있어!','idea','refresh']]},
+ {q:'잠깐 자유시간이 생겼어.\n제일 끌리는 건?',a:[['새로운 아이디어를 낙서해 보기.','idea','refresh'],['아무 생각 없이 가만히 있기.','rest','recovery'],['미뤄둔 일의 첫 줄만 써보기.','drive','focus']]},
+ {q:'오늘 업무에서 가장 필요한 건?',a:[['딴생각 없이 한 가지에 몰입하는 시간.','focus','drive'],['내 선택을 믿는 자신감.','confidence','idea'],['작게라도 웃을 수 있는 재미.','refresh','rest']]},
+ {q:'퇴근할 때 어떤 기분이면 좋겠어?',a:[['중요한 일을 하나는 끝낸 기분.','focus','drive'],['나 자신에게 좀 더 너그러워진 기분.','confidence','recovery'],['하루가 생각보다 재밌었다는 기분.','refresh','idea'],['푹 쉬고 내일을 맞을 수 있을 것 같은 기분.','rest','recovery']]}
+];
+
+const lunchResults = [
+ {title:'제육덮밥',image:'jeyuk.png',attrs:{hearty:3,spicy:4,familiar:3,quick:2},sub:'매콤하고 든든한 한 끼가 필요한 너에게',message:'돼지고기의 비타민 B1은 탄수화물을 에너지로 바꾸는 데 관여해.\n기운이 부족한 오늘, 오후를 위한 에너지를 채우는 데 도움이 될 수 있어.',tip:'오늘은 익숙하지만 확실한 맛으로 기분 좋게!',tags:['#밥','#한식','#매콤','#든든']},
+ {title:'우동',image:'udon.png',attrs:{warm:4,comfort:4,light:2,quick:2},sub:'따뜻한 국물로 잠깐 쉬어가고 싶은 너에게',message:'우동 면의 탄수화물은 몸과 뇌가 사용하는 에너지원이야.\n바빴던 오전을 보낸 너에게 필요한 에너지를 보충할 수 있어.',tip:'따뜻한 국물 한 모금만큼은 천천히 즐겨봐.',tags:['#면','#국물','#따뜻함','#편안함']},
+ {title:'샌드위치',image:'sandwich.png',attrs:{light:4,clean:4,quick:4},sub:'가볍고 산뜻한 한 끼가 필요한 너에게',message:'통곡물 빵의 식이섬유는 포만감 유지에 도움을 줄 수 있어.\n바쁜 너도 채소와 단백질 재료를 함께 먹으면 영양을 골고루 챙길 수 있어.',tip:'가볍게 먹고 남은 점심시간은 너를 위해 써봐.',tags:['#간편','#산뜻','#가벼움']},
+ {title:'닭갈비',image:'dakgalbi.png',attrs:{hearty:3,spicy:4,special:4,leisure:4},sub:'평범한 점심을 작은 이벤트로 만들고 싶은 너에게',message:'닭고기의 단백질과 비타민 B6는 몸의 정상적인 에너지 대사에 관여해.\n의욕이 떨어진 오늘, 필요한 영양을 든든하게 챙기는 데 도움이 될 수 있어.',tip:'맛있는 한 끼가 오늘의 재밌는 기억이 될지도!',tags:['#매콤','#특별한한끼','#함께']},
+ {title:'볶음밥',image:'fried-rice.png',attrs:{hearty:3,savory:4,familiar:4,quick:4},sub:'고민 없이 편안하게 먹고 싶은 너에게',message:'달걀에 들어 있는 콜린은 기억과 신경 신호 전달에 관여해.\n머리를 많이 쓰는 오늘, 밥과 달걀로 에너지와 단백질도 함께 챙길 수 있어.',tip:'선택이 어려운 날에는 익숙한 맛도 좋은 답이야.',tags:['#한그릇','#고소함','#익숙함']},
+ {title:'짜장면',image:'jajangmyeon.png',attrs:{hearty:4,savory:4,familiar:4,comfort:2},sub:'실패 없는 익숙한 맛이 끌리는 너에게',message:'짜장면 면의 탄수화물은 몸이 활동할 때 사용하는 주요 에너지원이야.\n할 일이 많은 오후를 앞둔 너에게 필요한 에너지를 공급할 수 있어.',tip:'오래 고민하지 말고 먹고 싶은 걸 골라도 돼.',tags:['#면','#감칠맛','#익숙한행복']},
+ {title:'초밥',image:'sushi.png',attrs:{clean:4,light:3,special:4,leisure:3},sub:'조금 특별한 선택으로 기분을 바꾸고 싶은 너에게',message:'연어나 등푸른생선에 들어 있는 오메가3는 뇌의 정상적인 기능에 중요한 지방산이야.\n생각이 많은 오늘, 이런 생선이 들어간 초밥으로 영양을 챙길 수 있어.',tip:'평소에 안 먹던 종류를 하나 골라보는 건 어때?',tags:['#깔끔','#특별함','#새로운맛']},
+ {title:'국밥',image:'gukbap.png',attrs:{hearty:4,warm:4,comfort:4,familiar:3},sub:'따뜻하고 든든하게 채우고 싶은 너에게',message:'국밥 속 고기의 단백질은 근육과 신체 조직을 유지하는 데 필요해.\n지친 오늘, 밥과 고기로 에너지와 단백질을 함께 보충할 수 있어.',tip:'오늘 점심만큼은 급하게 먹지 않아도 괜찮아.',tags:['#국물','#든든','#따뜻함']},
+ {title:'알밥',image:'albap.png',attrs:{savory:4,novel:4,special:3,quick:3},sub:'작은 재미가 있는 한 끼를 찾는 너에게',message:'생선알의 비타민 B12는 정상적인 신경 기능에 필요한 영양소야.\n집중이 흐트러지는 오늘, 단백질과 함께 챙기기 좋은 한 끼야.',tip:'사소한 재미 하나가 점심시간을 바꿀 수도 있어.',tags:['#톡톡','#식감','#소확행']},
+ {title:'비빔밥',image:'bibimbap.png',attrs:{hearty:3,clean:3,light:2,leisure:3,comfort:2},sub:'여러 맛을 골고루 즐기고 싶은 너에게',message:'여러 채소에 들어 있는 식이섬유는 소화와 혈당 관리에 도움을 줄 수 있어.\n정신없이 바쁜 오늘, 다양한 재료로 영양소를 골고루 챙길 수 있어.',tip:'오늘은 여러 가지 맛을 천천히 즐겨봐.',tags:['#한식','#다채로움','#든든함']}
+];
+const lunchQuestions = [
+ {q:'오늘 점심, 어떤 기분으로 먹고 싶어?',a:[['배부르게 든든하게!','hearty','familiar'],['가볍고 산뜻하게.','light','clean'],['평소보다 특별하게!','special','novel']]},
+ {q:'지금 가장 당기는 맛은?',a:[['매콤하고 확실한 맛.','spicy','hearty'],['따뜻하고 편안한 맛.','warm','comfort'],['담백하고 깔끔한 맛.','clean','light'],['짭짤하고 감칠맛 나는 맛.','savory','familiar']]},
+ {q:'점심시간이 얼마나 여유로워?',a:[['빨리 먹고 쉬고 싶어.','quick','familiar'],['천천히 즐길 수 있어.','leisure','comfort'],['시간을 내서라도 맛있는 걸 먹을래.','special','hearty']]},
+ {q:'지금 배고픔은 어느 정도야?',a:[['밥 한 그릇은 든든히 먹어야지.','hearty','warm'],['적당히 배부르면 만족해.','comfort','savory'],['가볍게 먹고 싶어.','light','clean']]},
+ {q:'오늘 메뉴를 고를 때 중요한 건?',a:[['실패 없는 익숙한 맛.','familiar','comfort'],['안 먹어 본 메뉴의 재미.','novel','special'],['먹기 편하고 빠른 메뉴.','quick','light']]},
+ {q:'식사 후 어떤 기분이면 좋겠어?',a:[['든든하게 오후를 시작하고 싶어.','hearty','savory'],['기분이 산뜻해졌으면 좋겠어.','clean','light'],['따뜻하게 마음이 풀렸으면 좋겠어.','warm','comfort']]},
+ {q:'오늘 점심에 어울리는 분위기는?',a:[['활기차고 신나는 식사.','spicy','special'],['조용하고 편안한 식사.','warm','comfort'],['작지만 색다른 즐거움.','novel','savory']]},
+ {q:'동료가 메뉴를 추천한다면?',a:[['늘 먹던 맛집 가자!','familiar','hearty'],['오늘은 새로운 데 가보자!','special','novel'],['가까운 곳에서 간단히 먹자!','quick','light']]},
+ {q:'점심 한 끼에 가장 기대하는 건?',a:[['확실한 포만감.','hearty','warm'],['새로운 맛과 식감.','novel','savory'],['속 편하고 가벼운 느낌.','clean','light']]},
+ {q:'마지막으로, 지금 더 끌리는 건?',a:[['밥이 있는 든든한 한 그릇.','hearty','familiar'],['따뜻한 면이나 국물.','warm','comfort'],['특별하고 깔끔한 한 끼.','special','clean'],['빠르게 먹을 수 있는 메뉴.','quick','savory']]}
+];
+
+const screen=document.getElementById('screen');
+const tabs=[...document.querySelectorAll('[data-tab]')];
+let current='home',step=0,answers=[],timer=null,token=0;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function cancelLoading(){token++;if(timer!==null){clearTimeout(timer);timer=null;}}
+function go(section='home'){cancelLoading();current=section;step=0;answers=[];render();}
+function pick(index){answers[step]=index;step++;if(step===getQuestions().length)showLoading();else render();}
+function previous(){if(step>0){step--;answers=answers.slice(0,step);render();}else go('home');}
+function getQuestions(){return current==='daily'?strengthQuestions:lunchQuestions;}
+function resultFor(){
  if(current==='daily'){
-  const scores=Object.fromEntries(Object.keys(d.results).map(k=>[k,0]));
-  answers.forEach((choice,i)=>d.questions[i].scores[choice].forEach((key,j)=>scores[key]+=j===0?3:1));
-  const best=Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0];return d.results[best];
+  const scores=Object.fromEntries(Object.keys(strengthResults).map(k=>[k,0]));
+  strengthQuestions.forEach((q,i)=>{const a=q.a[answers[i]];scores[a[1]]+=3;scores[a[2]]+=1;});
+  const keys=Object.keys(scores);const best=keys.sort((a,b)=>scores[b]-scores[a] || Object.keys(strengthResults).indexOf(a)-Object.keys(strengthResults).indexOf(b))[0];
+  return strengthResults[best];
  }
- const wants={};answers.forEach((choice,i)=>{Object.entries(d.questions[i].weights[choice]).forEach(([k,v])=>wants[k]=(wants[k]||0)+v)});
- const ranked=d.results.map((r,i)=>({r,i,score:Object.entries(wants).reduce((sum,[k,v])=>sum+v*(r.attrs[k]||0),0)})).sort((a,b)=>b.score-a.score);
- // 동점일 때 동일한 메뉴만 반복되지 않도록 선택 조합으로 안정적인 순서를 정합니다.
- const top=ranked.filter(x=>x.score===ranked[0].score);
- return top.length===1?top[0].r:top[answers.reduce((s,a,i)=>s+a*(i+3),0)%top.length].r;
+ const scores={};lunchQuestions.forEach((q,i)=>{const a=q.a[answers[i]];scores[a[1]]=(scores[a[1]]||0)+3;scores[a[2]]=(scores[a[2]]||0)+1;});
+ const ranked=lunchResults.map((r,i)=>({r,i,score:Object.entries(scores).reduce((sum,[key,v])=>sum+v*(r.attrs[key]||0),0)})).sort((a,b)=>b.score-a.score);
+ const top=ranked.filter(x=>x.score===ranked[0].score);return top[answers.reduce((sum,a,i)=>sum+a*(i+1),0)%top.length].r;
 }
+function updateTabs(){tabs.forEach(t=>{const active=t.dataset.tab===current;t.classList.toggle('active',active);t.setAttribute('aria-current',active?'page':'false');});}
+function progress(done,total){return `<div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><div class="progress-fill" style="width:${done/total*100}%"></div></div><div class="progress-info"><span>${done<total?`${done+1}/${total}`:''}</span><span class="right">응답 ${done}개</span></div>`;}
 function render(){
- homeBtn.style.display=current?'flex':'none';
- if(!current){
-  headerCount.textContent='';screen.className='home-screen';
-  screen.innerHTML=`<div class="intro"><p class="eyebrow">FIND YOUR BUFF</p><h1>오늘, 어떤 BUFF가 필요해?</h1><p class="subtitle">반복되는 하루에 작은 즐거움을 더하는 방법</p></div><div class="card-grid"><button class="choice-card" data-start="daily" aria-label="오늘의 BUFF 시작하기"><span class="choice-front"><img class="choice-icon-image" src="./images/icons/clover.png" alt="" aria-hidden="true"><span class="choice-title">오늘의 BUFF</span><span class="choice-desc">응원과 활력</span></span><span class="choice-hover" aria-hidden="true">오늘의 BUFF <span class="hover-arrow">→</span></span></button><button class="choice-card" data-start="lunch" aria-label="점메추 시작하기"><span class="choice-front"><img class="choice-icon-image" src="./images/icons/spoon-fork.png" alt="" aria-hidden="true"><span class="choice-title">점 메 추</span><span class="choice-desc">오늘의 한끼</span></span><span class="choice-hover" aria-hidden="true">점심 메뉴 추천 <span class="hover-arrow">→</span></span></button></div><p class="home-footer">콘텐츠를 선택하고 나만의 BUFF를 획득해 보세요.</p>`;
-  screen.querySelectorAll('[data-start]').forEach(b=>b.addEventListener('click',()=>start(b.dataset.start)));return;
+ updateTabs();screen.className='panel'+(current==='home'?' home-panel':'');
+ if(current==='home'){
+  screen.innerHTML=`<section class="home-view"><div class="intro"><p class="eyebrow">FIND YOUR BUFF</p><h1>오늘, 어떤 BUFF가 필요해?</h1><p class="sub">반복되는 하루에 작은 즐거움을 더하는 방법</p></div><div class="home-cards"><button class="home-card" data-open="daily"><img src="./clover-sky.png" alt="클로버"><span class="card-title">오늘의 힘</span><span class="card-sub">지금 나에게 필요한 작은 응원</span></button><button class="home-card" data-open="lunch"><img src="./lunch-sky.png" alt="수저"><span class="card-title">오늘의 점메추</span><span class="card-sub">지금 기분에 어울리는 한 끼</span></button></div><p class="home-foot">콘텐츠를 선택하고 오늘의 작은 즐거움을 찾아봐.</p></section>`;
+  screen.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>go(b.dataset.open));return;
  }
- const d=datasets[current],total=d.questions.length;headerCount.textContent=`${Math.min(step+1,total)}/${total}`;
+ const qs=getQuestions(),total=qs.length;
  if(step<total){
-  screen.className='quiz-screen';const q=d.questions[step];
-  screen.innerHTML=`${progress(total,step)}<h1 class="section-title">${escapeHTML(d.name)}</h1><div class="quiz-layout"><div class="question-box"><span class="question-label">질문 ${step+1}</span><h2>${escapeHTML(q.q)}</h2></div><div class="answers">${q.options.map((a,i)=>`<button class="answer" data-answer="${i}"><span class="number">${i+1}</span><span>${escapeHTML(a)}</span></button>`).join('')}</div></div><div class="back-row"><button id="prevBtn">← ${step===0?'처음으로':'이전 질문'}</button></div>`;
-  screen.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>choose(Number(b.dataset.answer))));document.getElementById('prevBtn').onclick=back;
- }else{
-  const r=getResult(),lunch=current==='lunch';headerCount.textContent=`${total}/${total}`;screen.className=`result-screen ${lunch?'result-lunch':'result-other'}`;
-  const photo=lunch?`<img class="food-photo" src="./images/lunch/${encodeURIComponent(r.image)}" alt="${escapeHTML(r.title)} 음식 이미지">`:'';
-  screen.innerHTML=`<div class="progress-track"><div class="progress-fill" style="width:100%"></div></div><div class="progress-meta"><span></span><span>응답 ${total}개</span></div><h1 class="section-title">결과</h1><div class="result-card"><span class="result-label">${lunch?'오늘의 추천 메뉴':'오늘의 BUFF'}</span><h2>${escapeHTML(r.title)}</h2>${photo}<p class="result-subtitle">${escapeHTML(r.subtitle)}</p><div class="buff-message"><span class="buff-kicker">${lunch?'':''}</span>${lunch?`<h3>${escapeHTML(r.buffTitle)}</h3>`:''}<p>${escapeHTML(r.message)}</p></div><div class="result-tags">${r.tags.map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div></div><div class="mission-box"><strong>${lunch?'점심시간 작은 미션':'오늘의 작은 미션'}</strong><p>${escapeHTML(r.mission)}</p></div><div class="result-actions"><button class="pill" id="otherBtn">다른 BUFF 찾기</button><button class="pill primary" id="againBtn">다시 테스트하기</button></div>`;
-  document.getElementById('otherBtn').onclick=goHome;document.getElementById('againBtn').onclick=()=>start(current);
+  const q=qs[step];screen.innerHTML=`<section class="quiz-view">${progress(step,total)}<div class="quiz-body"><button class="quiz-home" id="quizHome">← 처음으로</button><h1 class="quiz-title">질문 ${step+1}</h1><div class="question-area"><div class="question-card"><span class="label">오늘의 질문</span><h2>${esc(q.q)}</h2></div><div class="answer-list">${q.a.map((a,i)=>`<button class="answer" data-answer="${i}"><span class="answer-num">${i+1}</span><span>${esc(a[0])}</span></button>`).join('')}</div><button class="quiz-back" id="backBtn">← ${step===0?'처음으로':'이전'}</button></div></div></section>`;
+  screen.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>pick(Number(b.dataset.answer)));screen.querySelector('#quizHome').onclick=()=>go('home');screen.querySelector('#backBtn').onclick=previous;return;
  }
+ renderResult(resultFor());
 }
-homeBtn.onclick=goHome;render();
+function showLoading(){
+ cancelLoading();const myToken=token;const result=resultFor();const total=getQuestions().length;
+ updateTabs();screen.className='panel';screen.innerHTML=`<section class="loading-view">${progress(total,total)}<img class="loading-logo" src="./loading-logo.png" alt="결과를 준비하는 중"><p class="loading-tip">${esc(result.tip)}</p></section>`;
+ timer=setTimeout(()=>{timer=null;if(myToken===token)renderResult(result);},1500);
+}
+function renderResult(r){
+ updateTabs();const lunch=current==='lunch',total=getQuestions().length;screen.className='panel';
+ const photo=lunch?`<img class="food-photo" src="./images/lunch/${encodeURIComponent(r.image)}" alt="${esc(r.title)} 실제 음식 사진">`:'';
+ screen.innerHTML=`<section class="result-view ${lunch?'lunch':'daily'}">${progress(total,total)}<div class="result-body"><h1 class="result-title">결과</h1><article class="result-card"><p class="result-kicker">${lunch?'오늘 추천하는 점심 메뉴는':'오늘 너에게 필요한 힘은'}</p><h2 class="result-main">【 ${esc(r.title)} 】</h2>${photo}<p class="result-sub">${esc(r.sub)}</p>${lunch?'<span class="match">✓ 오늘의 추천 메뉴</span>':''}<p class="result-message">${esc(r.message)}</p><div class="tags">${r.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></article><p class="tip">${lunch?'TIP!':'오늘의 한마디'} ${esc(r.tip)}</p><div class="actions"><button class="pill" id="homeAgain">다른 콘텐츠 보기</button><button class="pill primary" id="again">다시 테스트하기</button></div></div></section>`;
+ if(lunch){
+  const foodImg=screen.querySelector('.food-photo');
+  foodImg.addEventListener('error',()=>{
+   foodImg.remove();
+   const note=document.createElement('p');
+   note.className='photo-error';
+   note.textContent='음식 사진을 불러오지 못했어. images/lunch 폴더의 파일명과 확장자를 확인해 줘.';
+   screen.querySelector('.result-sub').before(note);
+  },{once:true});
+ }
+ screen.querySelector('#homeAgain').onclick=()=>go('home');screen.querySelector('#again').onclick=()=>go(current);
+}
+tabs.forEach(t=>t.onclick=()=>go(t.dataset.tab));render();
